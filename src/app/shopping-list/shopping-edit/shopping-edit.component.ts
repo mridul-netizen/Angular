@@ -1,12 +1,14 @@
 import {
   Component,
   OnInit,
-  OnDestroy, ViewChild
+  OnDestroy,
+  ViewChild
 } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Subscription } from 'rxjs/Subscription';
+
 import { Ingredient } from '../../shared/ingredient.model';
 import { ShoppingListService } from '../shopping-list.service';
-import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-shopping-edit',
@@ -14,11 +16,12 @@ import {Subscription} from 'rxjs';
   styleUrls: ['./shopping-edit.component.css']
 })
 export class ShoppingEditComponent implements OnInit, OnDestroy {
-  @ViewChild('f') slForm: NgForm;
+  @ViewChild('f', { static: false }) slForm: NgForm;
   subscription: Subscription;
   editMode = false;
   editedItemIndex: number;
   editedItem: Ingredient;
+
   constructor(private slService: ShoppingListService) { }
 
   ngOnInit() {
@@ -31,11 +34,10 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
           this.slForm.setValue({
             name: this.editedItem.name,
             amount: this.editedItem.amount
-          });
+          })
         }
       );
   }
-
 
   onSubmit(form: NgForm) {
     const value = form.value;
@@ -62,6 +64,5 @@ export class ShoppingEditComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
-
 
 }
