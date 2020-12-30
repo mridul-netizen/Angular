@@ -1,6 +1,6 @@
 # MyFirstApp
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.0.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.0.The App has been the main project of Angular Course I did .Below this file are the setup instructions and the screenshots of the app attatched
 
 ## Development server
 
